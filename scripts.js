@@ -22,7 +22,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 produtoElement.className = 'produto-carrinho';
                 produtoElement.innerHTML = `
                     <div class="produto-info">
-                        
                         <div>
                             <h4>${produto.nome}</h4>
                             <p><strong>R$ ${(produto.preco * produto.quantidade).toFixed(2)}</strong></p>
@@ -30,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                     <div class="produto-actions">
                         <button data-index="${index}" class="btn-remove-one mais">-</button>
-                        <span class= "number-cart">${produto.quantidade}</span>
+                        <span class="number-cart">${produto.quantidade}</span>
                         <button data-index="${index}" class="btn-add-one mais">+</button>
                         <button data-index="${index}" class="btn-remove-all remove-all">Remover Todos</button>
                     </div>
@@ -65,12 +64,43 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
+    const gerarMensagemWhatsApp = () => {
+        if (carrinho.length === 0) {
+            return "Seu carrinho está vazio.";
+        }
+
+        let mensagem = "Olá, gostaria de finalizar o pedido:\n\n";
+        let total = 0;
+
+        carrinho.forEach(item => {
+            let subtotal = item.preco * item.quantidade;
+            total += subtotal;
+            mensagem += `- ${item.nome} (x${item.quantidade}): R$ ${subtotal.toFixed(2)}\n`;
+        });
+
+        mensagem += `\nTotal: R$ ${total.toFixed(2)}`;
+        return mensagem;
+    };
+
+    const enviarPedidoWhatsApp = () => {
+        const numeroWhatsApp = "5582982300284"; // Substitua pelo número de destino
+        const mensagem = gerarMensagemWhatsApp();
+
+        if (mensagem === "Seu carrinho está vazio.") {
+            alert("Seu carrinho está vazio. Adicione itens antes de finalizar o pedido.");
+            return;
+        }
+
+        const urlWhatsApp = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensagem)}`;
+        window.open(urlWhatsApp, "_blank"); // Abre o WhatsApp em uma nova aba
+    };
+
     const adicionarAoCarrinho = (nome, preco) => {
         const item = carrinho.find(produto => produto.nome === nome);
         if (item) {
             item.quantidade += 1;
         } else {
-            carrinho.push({ nome, preco, quantidade: 1});
+            carrinho.push({ nome, preco, quantidade: 1 });
         }
         localStorage.setItem('carrinho', JSON.stringify(carrinho));
         window.location.href = 'carrinho.html'; // Redireciona para a página do carrinho após adicionar um item
@@ -115,6 +145,14 @@ document.addEventListener('DOMContentLoaded', () => {
             adicionarAoCarrinho(nome, preco);
         });
     });
+
+    const btnFinalizarCompra = document.getElementById('finalizar-compra');
+    if (btnFinalizarCompra) {
+        btnFinalizarCompra.addEventListener('click', (event) => {
+            event.preventDefault(); // Evita comportamento padrão, se houver
+            enviarPedidoWhatsApp(); // Envia o pedido ao WhatsApp
+        });
+    }
 
     atualizarCarrinho();
 });

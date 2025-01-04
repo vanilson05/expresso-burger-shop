@@ -225,7 +225,7 @@ main {
 }
 
 .btn-adicionar {
-    background-color: red;
+    background-color: var(--primary-color);
     color: rgb(29, 29, 29);
     border: none;
     padding: 10px 15px;

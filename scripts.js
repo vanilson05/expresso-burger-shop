@@ -91,8 +91,11 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
+        // Codifica a mensagem para garantir que os caracteres especiais sejam tratados corretamente
         const urlWhatsApp = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensagem)}`;
-        window.open(urlWhatsApp, "_blank"); // Abre o WhatsApp em uma nova aba
+
+        // Abre a URL do WhatsApp em uma nova aba para iniciar a conversa
+        window.open(urlWhatsApp, "_blank"); 
     };
 
     const adicionarAoCarrinho = (nome, preco) => {

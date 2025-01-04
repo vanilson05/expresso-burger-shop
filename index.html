@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lanchonete E-commerce</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+
+</head>
+
+<body>
+    <div class="zap-link">
+        <a href="#">
+            <img src="./src/whatsapp.webp" alt="">
+        </a>
+    </div>
+    <header>
+        <div class="container">
+            <div class="logo-box">
+                <img src="./src/logo.jpg" alt="" class="logo">
+                <h1>KIAFANNY LANCHES - OFICIAL</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#menu">Menu</a></li>
+                    <li><a href="carrinho.html">Carrinho</a></li>
+                </ul>
+
+                <div class="carrinho-box">
+                    <a href="carrinho.html">
+                        <img src="./src/car-market.webp" alt="" class="carrinho-buy">
+                        <div id="cart-count">0</div>
+                    </a>
+                </div>
+            </nav>
+            
+        </div>
+    </header>
+
+    <main class="container">
+        <section id="menu">
+
+            <div class="produto">
+                <img src="src/x-burger.webp" alt="X-Burger">
+                <div class="produto-info">
+                    <h3>X-Burger</h3>
+                    <p>Pão, carne caseira 90g, queijo mussarela, alface, tomate, milho e batata palha</p>
+                    <p class="preco">R$ 21,00</p>
+                    <button class="btn-adicionar" data-nome="X-Burger" data-preco="21.00">Adicionar ao Carrinho</button>
+                </div>
+            </div>
+            <div class="produto">
+                <img src="src/x-bacon.webp" alt="X-Bacon">
+                <div class="produto-info">
+                    <h3>X-Bacon</h3>
+                    <p>Pão, carne caseira 90g, bacon, queijo mussarela, alface, tomate, milho e batata palha</p>
+                    <p class="preco">R$ 22,00</p>
+                    <button class="btn-adicionar" data-nome="X-Bacon" data-preco="22.00">Adicionar ao Carrinho</button>
+                </div>
+            </div>
+
+            <div class="produto">
+                <img src="src/x-tudo.jpg" alt="X-Tudo">
+                <div class="produto-info">
+                    <h3>X-Tudo</h3>
+                    <p>Pão, carne caseiro 90g, queijo mussarela, bacon, apresentado, banana, ovo, salsicha, alface,
+                        tomate, milho e batata palha</p>
+                    <p class="preco">R$ 25,00</p>
+                    <button class="btn-adicionar" data-nome="X-Tudo" data-preco="25.00">Adicionar ao Carrinho</button>
+                </div>
+            </div>
+
+            <div class="produto">
+                <img src="src/x-tudo-special.jpg" alt="X-Tudo Especial">
+                <div class="produto-info">
+                    <h3>X-Tudo Especial</h3>
+                    <p>Pão, duas carnes caseira 90g, queijo mussarela, bacon, apresentado, banana, ovo, salsicha,
+                        alface, tomate, milho e batata palha.</p>
+                    <p class="preco">R$ 29,90</p>
+                    <button class="btn-adicionar" data-nome="X-Tudo Especial" data-preco="29.00">Adicionar ao
+                        Carrinho</button>
+                </div>
+            </div>
+
+            <div class="produto">
+                <img src="src/batata.webp" alt="Batata-frita">
+                <div class="produto-info">
+                    <h3>Batatas com cheddar e bacon</h3>
+                    <p>Batatas deliciosas e crocantes com cheddar e bacon, porção de 200g</p>
+                    <p class="preco">R$ 20,00</p>
+                    <button class="btn-adicionar" data-nome="Batata frita com cheddar e bacon 200g"
+                        data-preco="20.00">Adicionar ao Carrinho</button>
+                </div>
+            </div>
+
+            <div class="produto">
+                <img src="src/bolinha-de-queijo.jpeg" alt="Mini Bolinhas de Queijo">
+                <div class="produto-info">
+                    <h3>Mini Bolinhas de queijo</h3>
+                    <p>Bolinhas de queijo, porção com 20 unidades</p>
+                    <p class="preco">R$ 19,90</p>
+                    <button class="btn-adicionar" data-nome="Mini Bolinhas de Queijo, 20 unidades"
+                        data-preco="19.90">Adicionar ao Carrinho</button>
+                </div>
+            </div>
+
+            <div class="produto">
+                <img src="src/frango.jpg" alt="Frango Empanado">
+                <div class="produto-info">
+                    <h3>Frango Empanado</h3>
+                    <p>Frango Empanado crocante, porção de 400g</p>
+                    <p class="preco">R$ 34,90</p>
+                    <button class="btn-adicionar" data-nome="Frango Empanado, porção de 400g"
+                        data-preco="34.90">Adicionar ao Carrinho</button>
+                </div>
+            </div>
+
+            <div class="produto">
+                <img src="src/latas.webp" alt="Refrigerante Lata">
+                <div class="produto-info">
+                    <h3>Refrigerante - Lata</h3>
+                    <p>Coca-Cola, Guaraná Antártica, Fanta Uva, Fanta Laranja, Sprite, Coca-Cola Zero</p>
+                    <p class="preco">R$ 7,00</p>
+                    <button class="btn-adicionar" data-nome="Refri em Lata" data-preco="07.00">Adicionar ao
+                        Carrinho</button>
+                </div>
+            </div>
+
+            <div class="produto">
+                <img src="src/garrafas.webp" alt="Refrigerante Garrafa">
+                <div class="produto-info">
+                    <h3>Refrigerante - 2 Litros</h3>
+                    <p>Coca-Cola, Guaraná Antártica, Fanta Uva, Fanta Laranja, Sprite</p>
+                    <p class="preco">R$ 14,00</p>
+                    <button class="btn-adicionar" data-nome="Refrigerante de 2L" data-preco="14.00">Adicionar ao Carrinho</button>
+                </div>
+            </div>
+
+            <div class="produto">
+                <img src="src/laranja.webp" alt="Suco de Laranja">
+                <div class="produto-info">
+                    <h3>Suco de Laranja</h3>
+                    <p>Suco de Laranja de 500ml</p>
+                    <p class="preco">R$ 10,00</p>
+                    <button class="btn-adicionar" data-nome="Suco de Laranja" data-preco="10.00">Adicionar ao Carrinho</button>
+                </div>
+            </div>
+
+
+        </section>
+
+        <script src="scripts.js"></script>
+</body>
+
+</html>

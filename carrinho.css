@@ -1,0 +1,297 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+:root {
+    --primary-color: #FFD700;
+    --secondary-color: #FFA500;
+    --background-color: #1A1A1A;
+    --text-color: #FFFFFF;
+    --card-background: #2A2A2A;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--background-color);
+    position: relative;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+header {
+    background-color: var(--background-color);
+    color: var(--primary-color);
+    padding: 20px 0;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header h1 {
+    font-size: 1.5em;
+    font-weight: 600;
+}
+
+nav {
+    display: flex;
+    gap: 50px;
+    align-items: center;
+
+}
+
+nav ul {
+    list-style-type: none;
+    display: flex;
+}
+
+nav ul li {
+    margin-left: 20px;
+}
+
+nav ul li a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 400;
+    transition: color 0.3s ease;
+    text-transform: uppercase;
+}
+
+nav ul li a:hover {
+    color: var(--secondary-color);
+}
+
+.logo-box {
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    text-shadow: 0 0 8px;
+}
+
+.logo {
+    box-shadow: 0 0 8px rgb(255, 255, 255);
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+}
+
+.logo img {
+
+    width: 100%;
+    height: 100%;
+}
+
+
+
+.zap-link {
+    z-index: 1;
+    position: fixed;
+    right: 10px;
+    bottom: 10px;
+    width: 40px;
+    height: 40px;
+}
+
+.zap-link img {
+    width: 100%;
+    height: 100%;
+}
+
+
+.carrinho-box {
+    position: relative;
+
+}
+
+.carrinho-buy {
+    border-radius: 10px;
+    width: 50px;
+    padding: 2px;
+
+}
+
+#cart-count {
+    top: -5px;
+    right: -8px;
+    position: absolute;
+    background-color: var(--secondary-color);
+    color: white;
+    border-radius: 50%;
+    padding: 5px;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    transition: background-color 0.3s ease;
+}
+
+#cart-count:hover {
+    background-color: var(--primary-color);
+}
+
+.banner {
+    background-image: url('banner.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary-color);
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.banner h2 {
+    font-size: 2.5em;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 10px 0;
+}
+
+
+main h2 {
+    font-size: 30px;
+    text-transform: uppercase;
+}
+
+
+
+#carrinho {
+
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+    color: #ffffff;
+    border-radius: 9px;
+    padding: 40px;
+    border: 2px solid rgb(117, 0, 153);
+    box-shadow: 0 0 10px rgb(4, 0, 211);
+    height: auto;
+
+
+}
+
+.number-cart {
+    font-weight: bold;
+    color: rgb(251, 255, 0);
+}
+
+.remove-all {
+    font-family: 'Poppins', Arial;
+    background-color: rgb(46, 111, 231);
+    color: white;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 10px;
+    border: none;
+}
+
+.btns {
+    gap: 8px;
+    display: flex;
+    margin-top: 10px;
+}
+
+.mais {
+    cursor: pointer;
+    width: 1.5rem;
+    padding: 5px;
+    background-color: rgb(255, 255, 255);
+    border: none;
+    border-radius: 5px;
+}
+
+#resumo-pedido button {
+    cursor: pointer;
+    width: 150px;
+    font-weight: 700;
+    font-size: 15px;
+    color: #53a0df;
+    font-family: 'Poppins';
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    background-color: #2A2A2A;
+    padding: 10px;
+    border-radius: 15px;
+    border: none;
+
+}
+
+@media (max-width: 768px) {
+
+header h1{
+    max-width: 50%;
+}
+
+    .logo-box{
+        align-items: center;
+        justify-content: center;
+    }
+    header .container {
+        flex-direction: column;
+    }
+
+    nav {
+        margin-top: 20px;
+    }
+
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    nav ul li {
+        margin: 10px 0;
+    }
+}
+
+@media (max-width: 450px) {
+
+    #carrinho {
+        width: 300px;
+        padding: 15px;
+    }
+
+    #resumo-pedido button {
+        width: 130px;
+    }
+}
+
+@media (max-width: 350px) {
+
+    #carrinho {
+        width: 280px;
+        padding: 15px;
+    }
+
+    #resumo-pedido button {
+        width: 120px;
+        font-size: 12px;
+    }
+}

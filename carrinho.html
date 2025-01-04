@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrinho - Lanchonete Online</title>
+    <link rel="stylesheet" href="carrinho.css">
+</head>
+<body>
+    <div class="zap-link">
+        <a href="#">
+            <img src="./src/whatsapp.webp" alt="">
+        </a>
+    </div>
+    <header>
+        <div class="container">
+            <div class="logo-box">
+                <img src="./src/logo.webp" alt="" class="logo">
+                <h1>Expresso Lanches</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Menu</a></li>
+                    <li><a href="#">Carrinho</a></li>
+                </ul>
+
+                <div class="carrinho-box">
+                    <a href="carrinho.html">
+                        <img src="./src/car-market.webp" alt="" class="carrinho-buy">
+                        <div id="cart-count">0</div>
+                    </a>
+                </div>
+            </nav>
+            
+        </div>
+    </header>
+
+    <main>
+        <h2>Meu Carrinho</h2>
+        <section id="carrinho">
+            
+            <div id="produtos-carrinho">
+                <!-- Produtos adicionados ao carrinho serão inseridos aqui -->
+            </div>
+            <div id="resumo-pedido">
+                <p>Subtotal: <span id="subtotal">R$ 0,00</span></p>
+                <p>Total: <span id="total">R$ 0,00</span></p>
+                <div class="btns">
+                <button id="finalizar-compra">Finalizar Compra</button>
+                <button id="btn-continuar-comprando">Continuar Comprando</button>
+            </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="scripts.js"></script>
+</body>
+</html>

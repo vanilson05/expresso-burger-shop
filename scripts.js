@@ -1,7 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     const carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
 
-    // Função para atualizar o carrinho
     const atualizarCarrinho = () => {
         const produtosCarrinho = document.getElementById('produtos-carrinho');
         const subtotalElement = document.getElementById('subtotal');
@@ -23,40 +22,52 @@ document.addEventListener('DOMContentLoaded', () => {
                 produtoElement.className = 'produto-carrinho';
                 produtoElement.innerHTML = `
                     <div class="produto-info">
-                        <h4>${produto.nome}</h4>
-                        <p><strong>R$ ${(produto.preco * produto.quantidade).toFixed(2)}</strong></p>
+                        <div>
+                            <h4>${produto.nome}</h4>
+                            <p><strong>R$ ${(produto.preco * produto.quantidade).toFixed(2)}</strong></p>
+                        </div>
                     </div>
                     <div class="produto-actions">
-                        <button data-index="${index}" class="btn-remove-one">-</button>
-                        <span>${produto.quantidade}</span>
-                        <button data-index="${index}" class="btn-add-one">+</button>
-                        <button data-index="${index}" class="btn-remove-all">Remover</button>
+                        <button data-index="${index}" class="btn-remove-one mais">-</button>
+                        <span class="number-cart">${produto.quantidade}</span>
+                        <button data-index="${index}" class="btn-add-one mais">+</button>
+                        <button data-index="${index}" class="btn-remove-all remove-all">Remover Todos</button>
                     </div>
                 `;
                 produtosCarrinho.appendChild(produtoElement);
 
-                produtoElement.querySelector('.btn-remove-one').addEventListener('click', () => {
+                const removeOneButton = produtoElement.querySelector('.btn-remove-one');
+                removeOneButton.addEventListener('click', () => {
                     removerUmItemDoCarrinho(index);
                 });
 
-                produtoElement.querySelector('.btn-add-one').addEventListener('click', () => {
+                const addOneButton = produtoElement.querySelector('.btn-add-one');
+                addOneButton.addEventListener('click', () => {
                     adicionarUmItemAoCarrinho(index);
                 });
 
-                produtoElement.querySelector('.btn-remove-all').addEventListener('click', () => {
+                const removeAllButton = produtoElement.querySelector('.btn-remove-all');
+                removeAllButton.addEventListener('click', () => {
                     removerTodosItensDoCarrinho(index);
                 });
             }
         });
 
-        if (subtotalElement) subtotalElement.textContent = `R$ ${subtotal.toFixed(2)}`;
-        if (totalElement) totalElement.textContent = `R$ ${subtotal.toFixed(2)}`;
-        if (cartCountElement) cartCountElement.textContent = totalItems;
+        if (subtotalElement) {
+            subtotalElement.textContent = `R$ ${subtotal.toFixed(2)}`;
+        }
+        if (totalElement) {
+            totalElement.textContent = `R$ ${subtotal.toFixed(2)}`;
+        }
+        if (cartCountElement) {
+            cartCountElement.textContent = totalItems;
+        }
     };
 
-    // Gera a mensagem do pedido
     const gerarMensagemWhatsApp = () => {
-        if (carrinho.length === 0) return "Seu carrinho está vazio.";
+        if (carrinho.length === 0) {
+            return "Seu carrinho está vazio.";
+        }
 
         let mensagem = "Olá, gostaria de finalizar o pedido:\n\n";
         let total = 0;
@@ -71,40 +82,30 @@ document.addEventListener('DOMContentLoaded', () => {
         return mensagem;
     };
 
-    // Envia o pedido via WhatsApp
     const enviarPedidoWhatsApp = () => {
-        const numeroWhatsApp = "5582982300284";
+        const numeroWhatsApp = "5582982300284"; // Substitua pelo número de destino
         const mensagem = gerarMensagemWhatsApp();
-
-        if (mensagem === "Seu carrinho está vazio.") {
-            Swal.fire({
-                title: 'Carrinho Vazio!',
-                text: 'Adicione itens ao carrinho antes de finalizar o pedido.',
-                icon: 'warning',
-                confirmButtonText: 'Entendido',
-                confirmButtonColor: '#4CAF50',
-                showClass: {
-                    popup: 'animate__animated animate__fadeInDown'
-                },
-                hideClass: {
-                    popup: 'animate__animated animate__fadeOutUp'
-                }
-            });
-            return;
-        }
-
-        const urlWhatsApp = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensagem)}`;
-        window.open(urlWhatsApp, "_blank");
+        const urlWhatsApp = `https://api.whatsapp.com/send?phone=${numeroWhatsApp}&text=${encodeURIComponent(mensagem)}`;
+        window.open(urlWhatsApp, "_blank"); // Abre o WhatsApp em uma nova aba
     };
 
-    // Adiciona um item ao carrinho
+    const adicionarAoCarrinho = (nome, preco) => {
+        const item = carrinho.find(produto => produto.nome === nome);
+        if (item) {
+            item.quantidade += 1;
+        } else {
+            carrinho.push({ nome, preco, quantidade: 1 });
+        }
+        localStorage.setItem('carrinho', JSON.stringify(carrinho));
+        window.location.href = 'carrinho.html'; // Redireciona para a página do carrinho após adicionar um item
+    };
+
     const adicionarUmItemAoCarrinho = (index) => {
         carrinho[index].quantidade += 1;
         localStorage.setItem('carrinho', JSON.stringify(carrinho));
         atualizarCarrinho();
     };
 
-    // Remove um item do carrinho
     const removerUmItemDoCarrinho = (index) => {
         if (carrinho[index].quantidade > 1) {
             carrinho[index].quantidade -= 1;
@@ -115,19 +116,35 @@ document.addEventListener('DOMContentLoaded', () => {
         atualizarCarrinho();
     };
 
-    // Remove todos os itens do carrinho
     const removerTodosItensDoCarrinho = (index) => {
         carrinho.splice(index, 1);
         localStorage.setItem('carrinho', JSON.stringify(carrinho));
         atualizarCarrinho();
     };
 
-    // Configura os botões
+    const continuarComprando = () => {
+        window.location.href = 'index.html'; // Redireciona para a página inicial após clicar em "Continuar Comprando"
+    };
+
+    const btnContinuarComprando = document.getElementById('btn-continuar-comprando');
+    if (btnContinuarComprando) {
+        btnContinuarComprando.addEventListener('click', continuarComprando);
+    }
+
+    const buttons = document.querySelectorAll('button[data-nome]');
+    buttons.forEach(button => {
+        button.addEventListener('click', () => {
+            const nome = button.getAttribute('data-nome');
+            const preco = parseFloat(button.getAttribute('data-preco'));
+            adicionarAoCarrinho(nome, preco);
+        });
+    });
+
     const btnFinalizarCompra = document.getElementById('finalizar-compra');
     if (btnFinalizarCompra) {
         btnFinalizarCompra.addEventListener('click', (event) => {
-            event.preventDefault();
-            enviarPedidoWhatsApp();
+            event.preventDefault(); // Evita comportamento padrão, se houver
+            enviarPedidoWhatsApp(); // Envia o pedido ao WhatsApp
         });
     }
 

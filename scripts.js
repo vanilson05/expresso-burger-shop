@@ -140,11 +140,17 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // Adicionando verificação no botão de "Finalizar Compra"
     const btnFinalizarCompra = document.getElementById('finalizar-compra');
     if (btnFinalizarCompra) {
         btnFinalizarCompra.addEventListener('click', (event) => {
-            event.preventDefault(); // Evita comportamento padrão, se houver
-            enviarPedidoWhatsApp(); // Envia o pedido ao WhatsApp
+            if (carrinho.length === 0) {
+                event.preventDefault(); // Evita o comportamento padrão
+                // Exibe o alerta de carrinho vazio
+                alert("Seu carrinho está vazio!");
+            } else {
+                enviarPedidoWhatsApp(); // Envia o pedido ao WhatsApp
+            }
         });
     }
 
